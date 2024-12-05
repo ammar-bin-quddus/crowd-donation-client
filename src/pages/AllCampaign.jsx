@@ -1,9 +1,10 @@
 import { useLoaderData } from "react-router-dom";
+import CampaignTable from "../components/CampaignTable";
 
 const AllCampaign = () => {
   const campaignData = useLoaderData();
 
-  console.log(campaignData);
+  //console.log(campaignData);
 
   return (
     <div className="w-11/12 mx-auto my-8">
@@ -20,17 +21,7 @@ const AllCampaign = () => {
             </tr>
           </thead>
           <tbody>
-            {campaignData.map((campaign, index) => (
-              <tr key={campaign._id}>
-                <th>{index + 1}</th>
-                <td>{campaign.title}</td>
-                <td>{campaign.email}</td>
-                <td>{campaign.deadline}</td>
-                <td>
-                  <button className="btn btn-neutral btn-outline btn-sm">See More</button>
-                </td>
-              </tr>
-            ))}
+            {campaignData.map((campaign, index) => <CampaignTable key={campaign._id} index={index} campaign={campaign} />)}
           </tbody>
         </table>
       </div>
