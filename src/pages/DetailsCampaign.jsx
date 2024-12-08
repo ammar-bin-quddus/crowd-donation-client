@@ -1,4 +1,3 @@
-import React from "react";
 import { useLoaderData } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
@@ -17,10 +16,10 @@ const DetailsCampaign = () => {
     amount,
     description,
     photoUrl,
-    type,
   } = detailsData;
 
   const handleDonate = () => {
+
     fetch(`http://localhost:5000/campaigns/${_id}`, {
       method: "POST",
       headers: {
@@ -58,7 +57,9 @@ const DetailsCampaign = () => {
         <div className="card-body text-center">
           <h2 className="text-3xl font-bold">{title}</h2>
           <p className="font-mono">{description}</p>
-          <p className="text-xl font-bold">Deadline: {deadline}</p>
+          <p className="text-xl font-bold">
+            Deadline: {deadline}
+          </p>
           <p className="text-xl font-bold">
             Minimum donation amount: {amount} BDT
           </p>

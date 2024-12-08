@@ -10,11 +10,13 @@ import Register from "../auth/Register";
 import PrivateRoutes from "../privateRoutes/PrivateRoutes";
 import DetailsCampaign from "../pages/DetailsCampaign";
 import UpdateCampaign from "../pages/UpdateCampaign";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",

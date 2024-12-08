@@ -10,7 +10,7 @@ const CampaignTable = ({ campaign, index }) => {
         <th>{index + 1}</th>
         <td>{title}</td>
         <td>{email}</td>
-        <td>{deadline}</td>
+        <td>{new Date(deadline).toLocaleDateString()}</td>
         <td>
           <Link to={`/campaigns/${_id}`}>
             <button className="btn btn-neutral btn-outline btn-sm">

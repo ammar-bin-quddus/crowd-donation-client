@@ -42,7 +42,7 @@ const MyCampaignTable = ({ index, myCampaign, myCampData, setMyCampData }) => {
       <th>{index + 1}</th>
       <td>{title}</td>
       <td>{amount} BDT</td>
-      <td>{deadline}</td>
+      <td>{new Date(deadline).toLocaleDateString()}</td>
       <td>
         <Link to={`/updateCampaign/${_id}`}>
           <button className="btn btn-neutral btn-outline btn-sm">Update</button>
