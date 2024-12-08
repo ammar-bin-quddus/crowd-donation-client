@@ -3,6 +3,7 @@ import { Typewriter } from "react-simple-typewriter";
 import Banner from '../components/Banner';
 import OurGoal from "../components/OurGoal";
 import JoinUs from "../components/JoinUs";
+import RunningCamp from "../components/RunningCamp";
 
 const Home = () => {
   return (
@@ -24,6 +25,9 @@ const Home = () => {
       <div className="my-6">
       <Banner />
       </div>
+      {/* <div className="my-6">
+      <RunningCamp />
+      </div> */}
       <div className="my-6">
         <OurGoal />
       </div>
