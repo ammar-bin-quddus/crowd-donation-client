@@ -38,7 +38,7 @@ const UpdateCampaign = () => {
 
     // send data to server
 
-    fetch(`http://localhost:5000/updatedCampaign/${_id}`, {
+    fetch(`https://crowd-donation-server.vercel.app/updatedCampaign/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

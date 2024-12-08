@@ -45,7 +45,7 @@ const Register = () => {
 
         // send data to server
         
-        fetch("http://localhost:5000/users", {
+        fetch("https://crowd-donation-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json"

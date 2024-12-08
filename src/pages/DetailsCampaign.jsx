@@ -2,10 +2,13 @@ import { useLoaderData } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Swal from "sweetalert2";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 const DetailsCampaign = () => {
   const detailsData = useLoaderData();
   //console.log(detailsData);
+  const [isExpired, setIsExpired] = useState(false);
 
   const {
     _id,
@@ -19,8 +22,7 @@ const DetailsCampaign = () => {
   } = detailsData;
 
   const handleDonate = () => {
-
-    fetch(`http://localhost:5000/campaigns/${_id}`, {
+    fetch(`https://crowd-donation-server.vercel.app/campaigns/${_id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,14 +31,27 @@ const DetailsCampaign = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
+        //console.log(data);
+        const currentDate = new Date();
+        const deadlineDate = new Date(deadline);
+        setIsExpired(deadlineDate < currentDate);
+        // if (isExpired) {
+        //   toast.error(
+        //     "You can't donate to this campaign as the deadline has passed."
+        //   );
+        //   return;
+        // }
+        if (data.insertedId && !isExpired) {
           Swal.fire({
             title: "Success!",
             text: "Donation Successful",
             icon: "success",
             confirmButtonText: "OK",
           });
+        } else {
+          toast.error(
+            "You can't donate to this campaign as the deadline has passed."
+          );
         }
       });
   };
@@ -57,9 +72,7 @@ const DetailsCampaign = () => {
         <div className="card-body text-center">
           <h2 className="text-3xl font-bold">{title}</h2>
           <p className="font-mono">{description}</p>
-          <p className="text-xl font-bold">
-            Deadline: {deadline}
-          </p>
+          <p className="text-xl font-bold">Deadline: {deadline}</p>
           <p className="text-xl font-bold">
             Minimum donation amount: {amount} BDT
           </p>

@@ -30,7 +30,7 @@ const MyDonateCard = ({ myDonate }) => {
             {type}
           </div>
           <div className="badge badge-outline font-semibold text-xs">
-            Donation Date: {deadline}
+            Deadline: {deadline}
           </div>
         </div>
       </div>
