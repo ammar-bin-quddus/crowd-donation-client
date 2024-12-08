@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const CampaignTable = ({ campaign, index }) => {
     
-    const {_id, title, email, deadline} = campaign;
+    const {_id, title, email, deadline, amount} = campaign;
 
   return (
       <tr>
@@ -11,6 +11,7 @@ const CampaignTable = ({ campaign, index }) => {
         <td>{title}</td>
         <td>{email}</td>
         <td>{new Date(deadline).toLocaleDateString()}</td>
+        <td>{amount}</td>
         <td>
           <Link to={`/campaigns/${_id}`}>
             <button className="btn btn-neutral btn-outline btn-sm">

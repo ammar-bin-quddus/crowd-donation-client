@@ -1,13 +1,28 @@
 import { useLoaderData } from "react-router-dom";
 import CampaignTable from "../components/CampaignTable";
+import { useState } from "react";
 
 const AllCampaign = () => {
   const campaignData = useLoaderData();
+
+  const [campData, setCampData] = useState(campaignData);
+  
+
+  const handleSort = () => {
+    const sortedData = campData.sort((a, b) => a.amount - b.amount);
+    console.log(sortedData)
+    setCampData(sortedData);
+  };
 
   //console.log(campaignData);
 
   return (
     <div className="w-11/12 mx-auto my-8">
+      <div className="flex justify-end items-center my-4">
+        <button onClick={handleSort} className="btn btn-neutral">
+          Sort
+        </button>
+      </div>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -17,11 +32,18 @@ const AllCampaign = () => {
               <th>Title</th>
               <th>Created By</th>
               <th>Deadline</th>
+              <th>Minimum Amount</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {campaignData.map((campaign, index) => <CampaignTable key={campaign._id} index={index} campaign={campaign} />)}
+            {campData.map((campaign, index) => (
+              <CampaignTable
+                key={campaign._id}
+                index={index}
+                campaign={campaign}
+              />
+            ))}
           </tbody>
         </table>
       </div>
