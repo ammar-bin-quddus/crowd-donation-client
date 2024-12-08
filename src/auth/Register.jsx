@@ -42,6 +42,21 @@ const Register = () => {
         setLoading(false);
         e.target.reset();
         navigate("/");
+
+        // send data to server
+        
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json"
+          },
+          body: JSON.stringify(registerData)
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        })
+
       })
       .catch((err) => {
         toast.error(err.code);

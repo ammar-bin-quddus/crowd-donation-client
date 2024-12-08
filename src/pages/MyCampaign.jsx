@@ -1,11 +1,41 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useLoaderData } from "react-router-dom";
+import MyCampaignTable from "../components/MyCampaignTable";
 
 const MyCampaign = () => {
-  return (
-    <div>
-        <p>MyCampaign</p>
-    </div>
-  )
-}
+  const myCampaignData = useLoaderData();
+  //console.log(myCampaignData);
+  const [myCampData, setMyCampData] = useState(myCampaignData);
 
-export default MyCampaign
+  return (
+    <div className="w-11/12 mx-auto my-8">
+      <div className="overflow-x-auto">
+        <table className="table">
+          {/* head */}
+          <thead>
+            <tr>
+              <th></th>
+              <th>Title</th>
+              <th>Minimum Amount</th>
+              <th>Deadline</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {myCampaignData.map((myCampaign, index) => (
+              <MyCampaignTable
+                key={myCampaign._id}
+                index={index}
+                myCampaign={myCampaign}
+                myCampData={myCampData}
+                setMyCampData={setMyCampData}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default MyCampaign;

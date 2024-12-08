@@ -20,10 +20,10 @@ const NavBar = () => {
             <NavLink to="/addCampaign">Add New Campaign</NavLink>
           </li>
           <li>
-            <NavLink to="/myCampaign">My Campaign</NavLink>
+            <NavLink to={`/myCampaign/${user?.email}`}>My Campaign</NavLink>
           </li>
           <li>
-            <NavLink to="/myDonations">My Donations</NavLink>
+            <NavLink to={`/myDonations/${user?.email}`}>My Donations</NavLink>
           </li>
         </>
       )}

@@ -1,11 +1,18 @@
-import React, { useContext } from "react";
-import Swal from "sweetalert2";
+import { useContext } from "react";
+import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
-const AddCampaign = () => {
+const UpdateCampaign = () => {
+  const updateData = useLoaderData();
   const { user } = useContext(AuthContext);
 
-  const handleAddCampaignForm = (e) => {
+  const { _id, photoUrl, title, description, amount, deadline, type } =
+    updateData;
+
+  const handleUpdateCampaignForm = (e) => {
     e.preventDefault();
     const form = e.target;
     const photoUrl = form.photo.value;
@@ -17,7 +24,7 @@ const AddCampaign = () => {
     const email = form.email.value;
     const userName = form.userName.value;
 
-    const newCampaign = {
+    const updatedCampaign = {
       photoUrl,
       title,
       description,
@@ -27,24 +34,24 @@ const AddCampaign = () => {
       email,
       userName,
     };
-    //console.log(newCampaign);
+    //console.log(updatedCampaign);
 
     // send data to server
 
-    fetch("http://localhost:5000/addCampaign", {
-      method: "POST",
+    fetch(`http://localhost:5000/updatedCampaign/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newCampaign),
+      body: JSON.stringify(updatedCampaign),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
+        if (data.modifiedCount) {
           Swal.fire({
             title: "Success!",
-            text: "Added Successfully",
+            text: "Updated Successfully",
             icon: "success",
             confirmButtonText: "OK",
           });
@@ -54,8 +61,11 @@ const AddCampaign = () => {
 
   return (
     <div className="w-11/12 mx-auto my-8">
-      <h1 className="font-bold text-3xl text-center">Add a New Campaign</h1>
-      <form onSubmit={(e) => handleAddCampaignForm(e)} className="card-body">
+      <div className="py-3">
+        <NavBar />
+      </div>
+      <h1 className="font-bold text-3xl text-center">Update Campaign Data</h1>
+      <form onSubmit={(e) => handleUpdateCampaignForm(e)} className="card-body">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* image url */}
           <div className="form-control">
@@ -65,6 +75,7 @@ const AddCampaign = () => {
             <input
               type="text"
               name="photo"
+              defaultValue={photoUrl}
               placeholder="enter your photo url"
               className="input input-bordered"
               required
@@ -78,6 +89,7 @@ const AddCampaign = () => {
             <input
               type="text"
               name="title"
+              defaultValue={title}
               placeholder="enter title"
               className="input input-bordered"
               required
@@ -88,7 +100,11 @@ const AddCampaign = () => {
             <label className="label">
               <span className="label-text">Select Campaign Type</span>
             </label>
-            <select name="type" className="select select-bordered">
+            <select
+              defaultValue={type}
+              name="type"
+              className="select select-bordered"
+            >
               <option value="personal-issue">Personal Issue</option>
               <option value="startup">Startup</option>
               <option value="business">Business</option>
@@ -103,6 +119,7 @@ const AddCampaign = () => {
             <textarea
               placeholder="description"
               name="description"
+              defaultValue={description}
               className="textarea textarea-bordered textarea-md w-full"
             ></textarea>
           </div>
@@ -114,6 +131,7 @@ const AddCampaign = () => {
             <input
               type="number"
               name="amount"
+              defaultValue={amount}
               placeholder="enter amount"
               className="input input-bordered"
               required
@@ -127,6 +145,7 @@ const AddCampaign = () => {
             <input
               type="date"
               name="deadline"
+              defaultValue={deadline}
               className="input input-bordered"
               required
             />
@@ -161,11 +180,14 @@ const AddCampaign = () => {
           </div>
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-neutral">ADD</button>
+          <button className="btn btn-neutral">UPDATE</button>
         </div>
       </form>
+      <div className="py-3">
+        <Footer />
+      </div>
     </div>
   );
 };
 
-export default AddCampaign;
+export default UpdateCampaign;
