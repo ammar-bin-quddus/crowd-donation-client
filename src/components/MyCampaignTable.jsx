@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 const MyCampaignTable = ({ index, myCampaign, myCampData, setMyCampData }) => {
   const { _id, title, amount, deadline } = myCampaign;
 
-  console.log(myCampData)
+  //console.log(myCampData)
 
   const handleDelete = (id) => {
     Swal.fire({

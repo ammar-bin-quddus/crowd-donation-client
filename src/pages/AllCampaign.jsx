@@ -10,7 +10,7 @@ const AllCampaign = () => {
 
   const handleSort = () => {
     const sortedData = campData.sort((a, b) => a.amount - b.amount);
-    console.log(sortedData)
+    //console.log(sortedData)
     setCampData(sortedData);
   };
 

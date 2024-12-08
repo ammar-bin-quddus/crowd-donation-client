@@ -2,8 +2,8 @@ import { useLoaderData } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Swal from "sweetalert2";
-import { useState } from "react";
-import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
+// import { toast } from "react-toastify";
 
 const DetailsCampaign = () => {
   const detailsData = useLoaderData();
@@ -21,6 +21,12 @@ const DetailsCampaign = () => {
     photoUrl,
   } = detailsData;
 
+  useEffect(() => {
+    const currentDate = new Date();
+    const deadlineDate = new Date(deadline);
+    setIsExpired(deadlineDate < currentDate);
+  }, [setIsExpired]);
+
   const handleDonate = () => {
     fetch(`https://crowd-donation-server.vercel.app/campaigns/${_id}`, {
       method: "POST",
@@ -31,16 +37,6 @@ const DetailsCampaign = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        //console.log(data);
-        const currentDate = new Date();
-        const deadlineDate = new Date(deadline);
-        setIsExpired(deadlineDate < currentDate);
-        // if (isExpired) {
-        //   toast.error(
-        //     "You can't donate to this campaign as the deadline has passed."
-        //   );
-        //   return;
-        // }
         if (data.insertedId && !isExpired) {
           Swal.fire({
             title: "Success!",
@@ -49,9 +45,12 @@ const DetailsCampaign = () => {
             confirmButtonText: "OK",
           });
         } else {
-          toast.error(
-            "You can't donate to this campaign as the deadline has passed."
-          );
+          Swal.fire({
+            title: "Failed!",
+            text: "You can't donate to this campaign as the deadline has passed.",
+            icon: "error",
+            confirmButtonText: "OK",
+          });
         }
       });
   };
