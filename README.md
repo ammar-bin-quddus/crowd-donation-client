@@ -1,8 +1,23 @@
-# React + Vite
+# Crowdcube: Crowd Funding Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## npm packages i have used.
 
-Currently, two official plugins are available:
+- Lottie React
+- React-simple-typewriter
+- react-icons
+- react-toastify
+- swiper
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
+
+- login and register functionalities
+- login and register with google
+- one can see his donated campaign
+- sort by minimum donation amount
+- update donation data
+- delete donation data
+- Add donation campaign
+
+## 🔗 Project Live Link
+
+https://crowd-donation.web.app/
