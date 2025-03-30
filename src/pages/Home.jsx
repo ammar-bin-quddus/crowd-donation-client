@@ -25,9 +25,9 @@ const Home = () => {
       <div className="my-6">
       <Banner />
       </div>
-      {/* <div className="my-6">
+      <div className="my-6">
       <RunningCamp />
-      </div> */}
+      </div>
       <div className="my-6">
         <OurGoal />
       </div>

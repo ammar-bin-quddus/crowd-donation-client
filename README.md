@@ -8,6 +8,7 @@
 - react-toastify
 - swiper
 
+
 ## Key Features
 
 - login and register functionalities

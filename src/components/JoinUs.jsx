@@ -27,46 +27,38 @@ const JoinUs = () => {
       <div className="flex flex-col md:flex-row justify-between items-center my-6">
         <div className="w-full md:w-1/2 bg-orange-200 p-4 flex flex-col justify-center gap-3 items-start rounded-md">
           <p>
-            <span className="font-semibold">Description: </span>At Crowdcube, we
+            <span className="text-lg font-semibold">Description: </span>At Crowdcube, we
             believe in the power of community to transform dreams into reality.
             By joining us, you become part of a network that celebrates
             innovation, compassion, and collaboration. Whether you're a creator
             looking to fund your vision or a supporter eager to make a
             difference, there’s a place for you here.
           </p>
-          <p>
-            <span className="font-semibold">Benefits of Joining: </span>
-            <ul>
-              <li>
-                For Campaigners:
-                <ul className="list-disc text-sm">
-                  <li className="ml-3">
-                    Launch and manage campaigns effortlessly.
-                  </li>
-                  <li className="ml-3">
-                    Access resources to maximize your fundraising success.
-                  </li>
-                  <li className="ml-3">
-                    Connect with a global audience that believes in your vision.
-                  </li>
-                </ul>
-              </li>
-              <li>
-                For Supporters:
-                <ul className="list-disc text-sm">
-                  <li className="ml-3">
-                    Discover diverse and inspiring projects to support.
-                  </li>
-                  <li className="ml-3">
-                    Contribute to meaningful causes and track their progress.
-                  </li>
-                  <li className="ml-3">
-                    Be part of a community that values impact and innovation.
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </p>
+          <div>
+            <h3 class="text-lg font-bold">Benefits of Joining:</h3>
+            <div class="mb-2">
+              <p class="font-semibold">For Campaigners:</p>
+              <ul class="list-disc list-inside ml-4">
+                <li>Launch and manage campaigns effortlessly.</li>
+                <li>Access resources to maximize your fundraising success.</li>
+                <li>
+                  Connect with a global audience that believes in your vision.
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold">For Supporters:</p>
+              <ul class="list-disc list-inside ml-4">
+                <li>Discover diverse and inspiring projects to support.</li>
+                <li>
+                  Contribute to meaningful causes and track their progress.
+                </li>
+                <li>
+                  Be part of a community that values impact and innovation.
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div className="w-full md:w-1/2">
           <div className="flex justify-center items-center gap-3">
@@ -79,7 +71,9 @@ const JoinUs = () => {
               />
             </div>
             <div>
-                <Link to='/register'><button className="btn btn-neutral btn-lg">Sign Up</button></Link>
+              <Link to="/register">
+                <button className="btn btn-neutral btn-lg">Sign Up</button>
+              </Link>
             </div>
           </div>
           <div className="flex justify-center items-center gap-3">
@@ -92,7 +86,9 @@ const JoinUs = () => {
               />
             </div>
             <div>
-                <Link to='/campaigns'><button className="btn btn-neutral btn-lg">Explore Now</button></Link>
+              <Link to="/campaigns">
+                <button className="btn btn-neutral btn-lg">Explore Now</button>
+              </Link>
             </div>
           </div>
         </div>

@@ -6,12 +6,12 @@ const AllCampaign = () => {
   const campaignData = useLoaderData();
 
   const [campData, setCampData] = useState(campaignData);
-  
+  console.log(campData);
 
   const handleSort = () => {
     const sortedData = campData.sort((a, b) => a.amount - b.amount);
-    //console.log(sortedData)
-    setCampData(sortedData);
+    console.log(sortedData)
+    setCampData([...sortedData]);
   };
 
   //console.log(campaignData);
