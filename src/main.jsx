@@ -7,6 +7,7 @@ import router from "./routes/Router.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AuthProvider from "./provider/AuthProvider.jsx";
+import "./index.css"
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

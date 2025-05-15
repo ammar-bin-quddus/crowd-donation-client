@@ -10,11 +10,14 @@ import "swiper/css/navigation";
 import "./bannercss/styles.css";
 
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 
 export default function App() {
   return (
-    <div className="h-[480px] w-[80%] mx-auto">
+    <div className="h-[480px] w-full relative">
+      <div className="absolute left-0 top-0 w-full h-full flex justify-center items-center z-10 bg-black bg-opacity-50">
+        <h1 className="text-4xl text-center text-white font-bold">Welcome To CROWDCUBE</h1>
+      </div>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -22,11 +25,7 @@ export default function App() {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[Autoplay]}
         className="mySwiper"
       >
         <SwiperSlide>
