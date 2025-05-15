@@ -36,7 +36,7 @@ const AllCampaign = () => {
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-base-content">
             {campData.map((campaign, index) => (
               <CampaignTable
                 key={campaign._id}

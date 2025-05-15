@@ -21,9 +21,14 @@ const SideBar = ({ open, setOpen }) => {
   );
 
   useEffect(() => {
-    localStorage.setItem("theme", theme);
-    const localTheme = localStorage.getItem("theme");
+    const localTheme = localStorage.getItem("theme") || "light";
+    setTheme(localTheme);
     document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    document.querySelector("html").setAttribute("data-theme", theme);
   }, [theme]);
 
   const handleToggle = (e) => {
@@ -40,7 +45,10 @@ const SideBar = ({ open, setOpen }) => {
         <NavLink to="/">
           <FaHome />
         </NavLink>
-        <NavLink className={`${open ? "block" : "hidden"} origin-left duration-200`} to="/">
+        <NavLink
+          className={`${open ? "block" : "hidden"} origin-left duration-200`}
+          to="/"
+        >
           Home
         </NavLink>
       </li>
@@ -48,7 +56,10 @@ const SideBar = ({ open, setOpen }) => {
         <NavLink to="/campaigns">
           <FaList />
         </NavLink>
-        <NavLink className={`${open ? "block" : "hidden"} origin-left duration-200`} to="/campaigns">
+        <NavLink
+          className={`${open ? "block" : "hidden"} origin-left duration-200`}
+          to="/campaigns"
+        >
           All Campaign
         </NavLink>
       </li>
@@ -58,7 +69,12 @@ const SideBar = ({ open, setOpen }) => {
             <NavLink to="/addCampaign">
               <MdAddBox />
             </NavLink>
-            <NavLink className={`${open ? "block" : "hidden"} origin-left duration-200`} to="/addCampaign">
+            <NavLink
+              className={`${
+                open ? "block" : "hidden"
+              } origin-left duration-200`}
+              to="/addCampaign"
+            >
               Add New Campaign
             </NavLink>
           </li>
@@ -67,7 +83,9 @@ const SideBar = ({ open, setOpen }) => {
               <FaBullhorn />
             </NavLink>
             <NavLink
-              className={`${open ? "block" : "hidden"} origin-left duration-200`}
+              className={`${
+                open ? "block" : "hidden"
+              } origin-left duration-200`}
               to={`/myCampaign/${user?.email}`}
             >
               My Campaign
@@ -78,7 +96,9 @@ const SideBar = ({ open, setOpen }) => {
               <FaDonate />
             </NavLink>
             <NavLink
-              className={`${open ? "block" : "hidden"} origin-left duration-200`}
+              className={`${
+                open ? "block" : "hidden"
+              } origin-left duration-200`}
               to={`/myDonations/${user?.email}`}
             >
               My Donations
@@ -101,7 +121,11 @@ const SideBar = ({ open, setOpen }) => {
         onClick={() => setOpen(!open)}
       />
       <div>
-        <div className={`flex flex-wrap gap-3 ${!open && "justify-center"} items-center`}>
+        <div
+          className={`flex flex-wrap gap-3 ${
+            !open && "justify-center"
+          } items-center`}
+        >
           <img
             src={logo}
             className={`w-8 h-8 rounded-md cursor-pointer duration-500 ${
@@ -119,8 +143,8 @@ const SideBar = ({ open, setOpen }) => {
             <input
               onChange={handleToggle}
               type="checkbox"
-              className="theme-controller"
               value="synthwave"
+              checked={theme === "dark"}
             />
 
             {/* sun icon */}

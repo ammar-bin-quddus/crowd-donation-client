@@ -7,8 +7,8 @@ const MyDonations = () => {
 
   return (
     <div className="w-11/12 mx-auto my-8">
-      <p className="font-bold text-3xl text-center">My Donations</p>
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <p className="font-bold text-3xl text-center text-base-content">My Donations</p>
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-base-content">
         {myDonateData.map((myDonate) => (
           <MyDonateCard key={myDonate._id} myDonate={myDonate} />
         ))}

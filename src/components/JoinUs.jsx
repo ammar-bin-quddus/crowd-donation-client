@@ -7,7 +7,7 @@ const JoinUs = () => {
   return (
     <div>
       <div className="flex flex-col justify-center items-center gap-3">
-        <h1 className="text-center text-2xl font-bold">Join Our Community</h1>
+        <h1 className="text-center text-2xl font-bold text-base-content">Join Our Community</h1>
         <h2 className="max-md:text-lg md:text-2xl text-[#308FB5] font-extrabold">
           <Typewriter
             words={[

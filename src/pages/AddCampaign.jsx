@@ -54,8 +54,8 @@ const AddCampaign = () => {
 
   return (
     <div className="w-11/12 mx-auto my-8">
-      <h1 className="font-bold text-3xl text-center">Add a New Campaign</h1>
-      <form onSubmit={(e) => handleAddCampaignForm(e)} className="card-body">
+      <h1 className="font-bold text-3xl text-center text-base-content">Add a New Campaign</h1>
+      <form onSubmit={(e) => handleAddCampaignForm(e)} className="card-body text-base-content">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* image url */}
           <div className="form-control">

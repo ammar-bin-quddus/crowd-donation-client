@@ -57,7 +57,7 @@ const DetailsCampaign = () => {
       <div className="py-3">
         <NavBar />
       </div>
-      <div className="card card-compact bg-base-100 shadow-xl my-8">
+      <div className="card card-compact bg-base-100 shadow-xl my-8 text-base-content">
         <figure>
           <img
             className="rounded-lg md:w-[80%] md:h-[500px]"

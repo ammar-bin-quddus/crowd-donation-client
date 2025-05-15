@@ -4,7 +4,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 const OurGoal = () => {
   return (
     <div>
-      <h1 className="text-center font-bold text-2xl">Our Goal</h1>
+      <h1 className="text-center font-bold text-2xl text-base-content">Our Goal</h1>
       <div className="flex flex-col md:flex-row justify-between items-center my-6">
         <div className="w-full md:w-1/2 bg-orange-200 p-4 flex flex-col justify-center gap-3 items-start rounded-md">
           <div>
