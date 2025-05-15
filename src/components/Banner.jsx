@@ -11,12 +11,23 @@ import "./bannercss/styles.css";
 
 // import required modules
 import { Autoplay } from "swiper/modules";
+import { Typewriter } from "react-simple-typewriter";
 
 export default function App() {
   return (
     <div className="h-[480px] w-full relative">
       <div className="absolute left-0 top-0 w-full h-full flex justify-center items-center z-10 bg-black bg-opacity-50">
-        <h1 className="text-4xl text-center text-white font-bold">Welcome To CROWDCUBE</h1>
+        <h1 className="text-white text-4xl md:text-6xl font-bold text-center">
+          <Typewriter
+            words={['Welcome To CROWDCUBE']}
+            loop={false}
+            cursor
+            cursorStyle="|"
+            typeSpeed={90}
+            deleteSpeed={90}
+            delaySpeed={1500}
+          />
+        </h1>
       </div>
       <Swiper
         spaceBetween={30}

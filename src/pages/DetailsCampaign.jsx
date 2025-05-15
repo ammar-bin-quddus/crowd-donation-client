@@ -2,19 +2,18 @@ import { useLoaderData } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Swal from "sweetalert2";
-import { useEffect, useState } from "react";
-// import { toast } from "react-toastify";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const DetailsCampaign = () => {
   const detailsData = useLoaderData();
   //console.log(detailsData);
   const [isExpired, setIsExpired] = useState(false);
+  const {user} = useContext(AuthContext);
 
   const {
     _id,
     title,
-    userName,
-    email,
     deadline,
     amount,
     description,
@@ -33,25 +32,23 @@ const DetailsCampaign = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(detailsData),
+      body: JSON.stringify({
+        donorName: user?.displayName,
+        donorEmail: user?.email,
+        amount: amount,
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId && !isExpired) {
-          Swal.fire({
-            title: "Success!",
-            text: "Donation Successful",
-            icon: "success",
-            confirmButtonText: "OK",
-          });
+          Swal.fire("Success!", "Donation Successful", "success");
         } else {
-          Swal.fire({
-            title: "Failed!",
-            text: "You can't donate to this campaign as the deadline has passed.",
-            icon: "error",
-            confirmButtonText: "OK",
-          });
+          Swal.fire("Error!", "Donation failed or expired", "error");
         }
+      })
+      .catch((error) => {
+        console.error("Donation error:", error);
+        Swal.fire("Error!", "Something went wrong", "error");
       });
   };
 
