@@ -9,9 +9,9 @@ const Home = ({ open }) => {
       <div className="w-full mb-6">
         <Banner />
       </div>
-      <div className="w-11/12 mx-auto my-6">
+      {/* <div className="w-11/12 mx-auto my-6">
         <RunningCamp />
-      </div>
+      </div> */}
       <div className="w-11/12 mx-auto my-6">
         <OurGoal />
       </div>

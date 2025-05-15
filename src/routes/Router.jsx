@@ -11,6 +11,7 @@ import PrivateRoutes from "../privateRoutes/PrivateRoutes";
 import DetailsCampaign from "../pages/DetailsCampaign";
 import UpdateCampaign from "../pages/UpdateCampaign";
 import ErrorPage from "../pages/ErrorPage";
+import Dashboard from "../pages/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
         ),
         loader: ({params}) => fetch(`https://crowd-donation-server.vercel.app/myDonations/${params.email}`)
       },
+      {
+        path: "/dashboard",
+        element: <Dashboard />
+      }
     ],
   },
   {

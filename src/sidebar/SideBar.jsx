@@ -13,6 +13,7 @@ import logo from "../assets/images/logo.png";
 import { AiOutlineLogin } from "react-icons/ai";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { IoPersonAdd } from "react-icons/io5";
+import { RxDashboard } from "react-icons/rx";
 
 const SideBar = ({ open, setOpen }) => {
   const { handleLogOut, user } = useContext(AuthContext);
@@ -65,6 +66,19 @@ const SideBar = ({ open, setOpen }) => {
       </li>
       {user && (
         <>
+          <li className="hover:bg-white hover:text-black flex rounded-md p-2 cursor-pointer hover:bg-light-white text-white text-sm items-center gap-x-4">
+            <NavLink to="/dashboard">
+              <RxDashboard />
+            </NavLink>
+            <NavLink
+              className={`${
+                open ? "block" : "hidden"
+              } origin-left duration-200`}
+              to="/dashboard"
+            >
+              Dashboard
+            </NavLink>
+          </li>
           <li className="hover:bg-white hover:text-black flex rounded-md p-2 cursor-pointer hover:bg-light-white text-white text-sm items-center gap-x-4">
             <NavLink to="/addCampaign">
               <MdAddBox />

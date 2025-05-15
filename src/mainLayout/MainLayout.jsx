@@ -24,7 +24,7 @@ const MainLayout = () => {
               open ? "w-[calc(100%-288px)]" : "w-[calc(100%-80px)]"
             } ${open ? "sm:ml-[288px]" : "sm:ml-[80px]"}`}
           >
-            <main className="flex-1 pb-4">
+            <main className="flex-1">
               <Outlet open={open} />
             </main>
             <Footer />
