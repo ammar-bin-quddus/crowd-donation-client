@@ -15,7 +15,7 @@ import { RiLogoutCircleLine } from "react-icons/ri";
 import { IoPersonAdd } from "react-icons/io5";
 import { RxDashboard } from "react-icons/rx";
 
-const SideBar = ({ open, setOpen }) => {
+const SideBar = ({open, setOpen}) => {
   const { handleLogOut, user } = useContext(AuthContext);
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -43,77 +43,53 @@ const SideBar = ({ open, setOpen }) => {
   const links = (
     <>
       <li className="hover:bg-white hover:text-black flex rounded-md p-2 cursor-pointer hover:bg-light-white text-white text-sm items-center gap-x-4">
-        <NavLink to="/">
+        <NavLink to="/dashboard">
           <FaHome />
         </NavLink>
         <NavLink
           className={`${open ? "block" : "hidden"} origin-left duration-200`}
-          to="/"
+          to="/dashboard"
         >
           Home
-        </NavLink>
-      </li>
-      <li className="hover:bg-white hover:text-black flex rounded-md p-2 cursor-pointer hover:bg-light-white text-white text-sm items-center gap-x-4">
-        <NavLink to="/campaigns">
-          <FaList />
-        </NavLink>
-        <NavLink
-          className={`${open ? "block" : "hidden"} origin-left duration-200`}
-          to="/campaigns"
-        >
-          All Campaign
         </NavLink>
       </li>
       {user && (
         <>
           <li className="hover:bg-white hover:text-black flex rounded-md p-2 cursor-pointer hover:bg-light-white text-white text-sm items-center gap-x-4">
-            <NavLink to="/dashboard">
-              <RxDashboard />
-            </NavLink>
-            <NavLink
-              className={`${
-                open ? "block" : "hidden"
-              } origin-left duration-200`}
-              to="/dashboard"
-            >
-              Dashboard
-            </NavLink>
-          </li>
-          <li className="hover:bg-white hover:text-black flex rounded-md p-2 cursor-pointer hover:bg-light-white text-white text-sm items-center gap-x-4">
-            <NavLink to="/addCampaign">
+            <NavLink to="addCampaign">
               <MdAddBox />
             </NavLink>
             <NavLink
               className={`${
                 open ? "block" : "hidden"
               } origin-left duration-200`}
-              to="/addCampaign"
+              to="addCampaign"
             >
               Add New Campaign
             </NavLink>
           </li>
           <li className="hover:bg-white hover:text-black flex rounded-md p-2 cursor-pointer hover:bg-light-white text-white text-sm items-center gap-x-4">
-            <NavLink to={`/myCampaign/${user?.email}`}>
+            <NavLink to={`myCampaign/${user?.email}`}>
               <FaBullhorn />
             </NavLink>
             <NavLink
               className={`${
                 open ? "block" : "hidden"
               } origin-left duration-200`}
-              to={`/myCampaign/${user?.email}`}
+              to={`myCampaign/${user?.email}`}
             >
               My Campaign
             </NavLink>
           </li>
           <li className="hover:bg-white hover:text-black flex rounded-md p-2 cursor-pointer hover:bg-light-white text-white text-sm items-center gap-x-4">
-            <NavLink to={`/myDonations/${user?.email}`}>
+            <NavLink to={`myDonations/${user?.email}`}>
               <FaDonate />
             </NavLink>
             <NavLink
               className={`${
                 open ? "block" : "hidden"
               } origin-left duration-200`}
-              to={`/myDonations/${user?.email}`}
+              to={`myDonations/${user?.email}`}
             >
               My Donations
             </NavLink>
@@ -127,7 +103,7 @@ const SideBar = ({ open, setOpen }) => {
     <div
       className={` ${
         open ? "w-72" : "w-20 "
-      } bg-[#308FB5] h-[100vh] p-5  pt-8 relative duration-300 flex flex-col justify-between`}
+      } bg-[#308FB5] h-screen p-5  pt-8 relative duration-300 flex flex-col justify-between`}
     >
       <FaArrowLeft
         className={`absolute cursor-pointer -right-3 top-9 w-7 h-7 text-sm text-white border-[#308FB5] bg-[#308FB5]

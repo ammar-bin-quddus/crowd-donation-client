@@ -1,9 +1,9 @@
 import { useLoaderData } from "react-router-dom";
-import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Swal from "sweetalert2";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import Nav from "../components/Nav";
 
 const DetailsCampaign = () => {
   const detailsData = useLoaderData();
@@ -55,7 +55,7 @@ const DetailsCampaign = () => {
   return (
     <div className="w-11/12 mx-auto">
       <div className="py-3">
-        <NavBar />
+        <Nav />
       </div>
       <div className="card card-compact bg-base-100 shadow-xl my-8 text-base-content">
         <figure>

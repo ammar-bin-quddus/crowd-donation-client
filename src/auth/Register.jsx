@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useContext, useState } from "react";
-import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
+import Nav from "../components/Nav";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -86,7 +86,7 @@ const Register = () => {
   return (
     <div>
       <div className="w-11/12 mx-auto py-3">
-        <NavBar />
+        <Nav />
       </div>
       <div className="min-h-screen flex justify-center items-center my-10">
         <div className="card bg-base-100 w-full shadow-xl max-w-lg shrink-0 rounded-none p-8">

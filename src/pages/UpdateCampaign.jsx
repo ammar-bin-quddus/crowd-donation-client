@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
-import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import Nav from "../components/Nav";
 
 const UpdateCampaign = () => {
   const updateData = useLoaderData();
@@ -62,7 +62,7 @@ const UpdateCampaign = () => {
   return (
     <div className="w-11/12 mx-auto my-8">
       <div className="py-3">
-        <NavBar />
+        <Nav />
       </div>
       <h1 className="font-bold text-3xl text-center">Update Campaign Data</h1>
       <form onSubmit={(e) => handleUpdateCampaignForm(e)} className="card-body">

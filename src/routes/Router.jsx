@@ -11,6 +11,7 @@ import PrivateRoutes from "../privateRoutes/PrivateRoutes";
 import DetailsCampaign from "../pages/DetailsCampaign";
 import UpdateCampaign from "../pages/UpdateCampaign";
 import ErrorPage from "../pages/ErrorPage";
+import DashboardHome from "../pages/DashboardHome";
 import Dashboard from "../pages/Dashboard";
 
 const router = createBrowserRouter([
@@ -26,10 +27,21 @@ const router = createBrowserRouter([
       {
         path: "/campaigns",
         element: <AllCampaign />,
-        loader: () => fetch("https://crowd-donation-server.vercel.app/addCampaign"),
+        loader: () =>
+          fetch("https://crowd-donation-server.vercel.app/addCampaign"),
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <DashboardHome />,
       },
       {
-        path: "/addCampaign",
+        path: "addCampaign",
         element: (
           <PrivateRoutes>
             <AddCampaign />
@@ -37,28 +49,29 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/myCampaign/:email",
+        path: "myCampaign/:email",
         element: (
           <PrivateRoutes>
             <MyCampaign />
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`https://crowd-donation-server.vercel.app/myCampaign/${params.email}`),
+          fetch(
+            `https://crowd-donation-server.vercel.app/myCampaign/${params.email}`
+          ),
       },
       {
-        path: "/myDonations/:email",
+        path: "myDonations/:email",
         element: (
           <PrivateRoutes>
             <MyDonations />
           </PrivateRoutes>
         ),
-        loader: ({params}) => fetch(`https://crowd-donation-server.vercel.app/myDonations/${params.email}`)
+        loader: ({ params }) =>
+          fetch(
+            `https://crowd-donation-server.vercel.app/myDonations/${params.email}`
+          ),
       },
-      {
-        path: "/dashboard",
-        element: <Dashboard />
-      }
     ],
   },
   {
@@ -83,7 +96,9 @@ const router = createBrowserRouter([
     path: "/updateCampaign/:id",
     element: <UpdateCampaign />,
     loader: ({ params }) =>
-      fetch(`https://crowd-donation-server.vercel.app/updateCampaign/${params.id}`),
+      fetch(
+        `https://crowd-donation-server.vercel.app/updateCampaign/${params.id}`
+      ),
   },
 ]);
 
