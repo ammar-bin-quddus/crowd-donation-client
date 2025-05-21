@@ -5,7 +5,7 @@ import { Typewriter } from "react-simple-typewriter";
 
 const JoinUs = () => {
   return (
-    <div>
+    <div className="mt-16">
       <div className="flex flex-col justify-center items-center gap-3">
         <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center text-base-content">
           Join Our Community
@@ -27,7 +27,7 @@ const JoinUs = () => {
       </div>
 
       <div className="flex flex-col md:flex-row justify-between items-center my-6 gap-10">
-        <div className="w-full md:w-1/2 bg-orange-200 p-4 flex flex-col justify-center gap-3 items-start rounded-md">
+        <div className="w-full md:w-1/2 bg-gray-100 p-4 flex flex-col justify-center gap-3 items-start rounded-md">
           <p>
             <span className="text-lg font-semibold">Description: </span>At
             Crowdcube, we believe in the power of community to transform dreams

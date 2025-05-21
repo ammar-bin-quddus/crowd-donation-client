@@ -20,23 +20,23 @@ const RunningCamp = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {campaigns.map((campaign) => (
           <div
-            key={campaign._id}
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 transition hover:shadow-lg"
+            key={campaign?._id}
+            className="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-md p-5 transition hover:shadow-lg"
           >
             <h3 className="text-lg md:text-xl font-semibold mb-2 text-gray-800 dark:text-white hover:text-yellow-600">
-              {campaign.title}
+              {campaign?.title}
             </h3>
             <p className="text-sm text-gray-600 dark:text-gray-300 mb-1">
-              Goal: <span className="font-medium">${campaign.goalAmount}</span>
+              Created By: <span className="font-medium">{campaign?.userName}</span>
             </p>
             <p className="text-sm text-gray-600 dark:text-gray-300 mb-1">
-              Raised:{" "}
-              <span className="font-medium">${campaign.donatedAmount}</span>
+              Type:{" "}
+              <span className="font-medium">{campaign?.type}</span>
             </p>
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-              Deadline: {new Date(campaign.deadline).toLocaleDateString()}
+              Deadline: {new Date(campaign?.deadline).toLocaleDateString()}
             </p>
-            <Link to={`/campaigns/${campaign._id}`}>
+            <Link to={`/campaigns/${campaign?._id}`}>
               <button className="btn btn-outline btn-sm w-full">
                 See More
               </button>

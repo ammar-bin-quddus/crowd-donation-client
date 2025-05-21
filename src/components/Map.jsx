@@ -17,7 +17,7 @@ const Map = () => {
 
   return (
     <div className="mt-8">
-      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-base-content">
         Find Us
       </h2>
       <LoadScript googleMapsApiKey="AIzaSyDRUsPNind2nY9AtPaQ8d0cGEXXh-B5etc">

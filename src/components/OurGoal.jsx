@@ -6,7 +6,7 @@ const OurGoal = () => {
     <div>
       <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center text-base-content">Our Goal</h1>
       <div className="flex flex-col md:flex-row justify-between items-center my-6">
-        <div className="w-full md:w-1/2 bg-orange-200 p-4 flex flex-col justify-center gap-3 items-start rounded-md">
+        <div className="w-full md:w-1/2 bg-gray-100 p-4 flex flex-col justify-center gap-3 items-start rounded-md">
           <div>
             <DotLottieReact
               className="w-16 h-12"

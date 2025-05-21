@@ -61,8 +61,8 @@ const News = () => {
   ];
 
   return (
-    <section className="px-4 py-8 h-[70vh] mb-8 text-base-content">
-      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
+    <section className="px-4 py-8 h-[70vh]">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-base-content">
         News & Articles
       </h2>
       <Swiper
