@@ -88,7 +88,7 @@ const News = () => {
         {newsApi.map((news, idx) => (
           <SwiperSlide key={idx}>
             <div className="bg-gray-100 pl-6 pt-6 flex flex-col items-start justify-between text-left gap-6 h-full">
-              <p className="text-xs text-white bg-blue-800 p-1">{news?.date}</p>
+              <p className="text-xs text-white bg-[#674DF0] p-2">{news?.date}</p>
               <p className="flex items-center gap-2 text-sm font-extralight text-gray-600">
                 <FaUser />
                 {news?.writer}

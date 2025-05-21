@@ -53,8 +53,8 @@ const DetailsCampaign = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto">
-      <div className="py-3">
+    <div>
+      <div>
         <Nav />
       </div>
       <div className="card card-compact bg-base-100 shadow-xl my-8 text-base-content">
@@ -68,7 +68,7 @@ const DetailsCampaign = () => {
         <div className="card-body text-center">
           <h2 className="text-3xl font-bold">{title}</h2>
           <p className="font-mono">{description}</p>
-          <p className="text-xl font-bold">Deadline: {deadline}</p>
+          <p className="text-xl font-bold">Deadline: {new Date(deadline).toLocaleString()}</p>
           <p className="text-xl font-bold">
             Minimum donation amount: {amount} BDT
           </p>
