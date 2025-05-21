@@ -7,6 +7,7 @@ import {
   FaDonate,
   FaHome,
   FaList,
+  FaUser,
 } from "react-icons/fa";
 import { MdAddBox } from "react-icons/md";
 import logo from "../assets/images/logo.png";
@@ -15,7 +16,7 @@ import { RiLogoutCircleLine } from "react-icons/ri";
 import { IoPersonAdd } from "react-icons/io5";
 import { RxDashboard } from "react-icons/rx";
 
-const SideBar = ({open, setOpen}) => {
+const SideBar = ({ open, setOpen }) => {
   const { handleLogOut, user } = useContext(AuthContext);
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -40,58 +41,210 @@ const SideBar = ({open, setOpen}) => {
     }
   };
 
+  // const links = (
+  //   <>
+  //     <li className="flex rounded-md p-2 cursor-pointer text-sm items-center gap-x-4">
+  //       <NavLink
+  //         to="/"
+  //         className={({ isActive }) =>
+  //           `p-2 rounded ${isActive ? "bg-white text-black" : "text-white"}`
+  //         }
+  //       >
+  //         <FaHome />
+  //       </NavLink>
+  //       <NavLink
+  //         to="/"
+  //         className={({ isActive }) =>
+  //           `${
+  //             open ? "block" : "hidden"
+  //           } origin-left duration-200 p-2 rounded ${
+  //             isActive ? "bg-white text-black" : "text-white"
+  //           }`
+  //         }
+  //       >
+  //         Home
+  //       </NavLink>
+  //     </li>
+
+  //     {user && (
+  //       <>
+  //         <li className="flex rounded-md p-2 cursor-pointer text-sm items-center gap-x-4">
+  //           <NavLink
+  //             to="/dashboard"
+  //             className={({ isActive }) =>
+  //               `p-2 rounded ${isActive ? "bg-white text-black" : "text-white"}`
+  //             }
+  //           >
+  //             <MdAddBox />
+  //           </NavLink>
+  //           <NavLink
+  //             to="/dashboard"
+  //             className={({ isActive }) =>
+  //               `${
+  //                 open ? "block" : "hidden"
+  //               } origin-left duration-200 p-2 rounded ${
+  //                 isActive ? "bg-white text-black" : "text-white"
+  //               }`
+  //             }
+  //           >
+  //             Profile
+  //           </NavLink>
+  //         </li>
+
+  //         <li className="flex rounded-md p-2 cursor-pointer text-sm items-center gap-x-4">
+  //           <NavLink
+  //             to="addCampaign"
+  //             className={({ isActive }) =>
+  //               `p-2 rounded ${isActive ? "bg-white text-black" : "text-white"}`
+  //             }
+  //           >
+  //             <MdAddBox />
+  //           </NavLink>
+  //           <NavLink
+  //             to="addCampaign"
+  //             className={({ isActive }) =>
+  //               `${
+  //                 open ? "block" : "hidden"
+  //               } origin-left duration-200 p-2 rounded ${
+  //                 isActive ? "bg-white text-black" : "text-white"
+  //               }`
+  //             }
+  //           >
+  //             Add New Campaign
+  //           </NavLink>
+  //         </li>
+
+  //         <li className="flex rounded-md p-2 cursor-pointer text-sm items-center gap-x-4">
+  //           <NavLink
+  //             to={`myCampaign/${user?.email}`}
+  //             className={({ isActive }) =>
+  //               `p-2 rounded ${isActive ? "bg-white text-black" : "text-white"}`
+  //             }
+  //           >
+  //             <FaBullhorn />
+  //           </NavLink>
+  //           <NavLink
+  //             to={`myCampaign/${user?.email}`}
+  //             className={({ isActive }) =>
+  //               `${
+  //                 open ? "block" : "hidden"
+  //               } origin-left duration-200 p-2 rounded ${
+  //                 isActive ? "bg-white text-black" : "text-white"
+  //               }`
+  //             }
+  //           >
+  //             My Campaign
+  //           </NavLink>
+  //         </li>
+
+  //         <li className="flex rounded-md p-2 cursor-pointer text-sm items-center gap-x-4">
+  //           <NavLink
+  //             to={`myDonations/${user?.email}`}
+  //             className={({ isActive }) =>
+  //               `p-2 rounded ${isActive ? "bg-white text-black" : "text-white"}`
+  //             }
+  //           >
+  //             <FaDonate />
+  //           </NavLink>
+  //           <NavLink
+  //             to={`myDonations/${user?.email}`}
+  //             className={({ isActive }) =>
+  //               `${
+  //                 open ? "block" : "hidden"
+  //               } origin-left duration-200 p-2 rounded ${
+  //                 isActive ? "bg-white text-black" : "text-white"
+  //               }`
+  //             }
+  //           >
+  //             My Donations
+  //           </NavLink>
+  //         </li>
+  //       </>
+  //     )}
+  //   </>
+  // );
+
   const links = (
     <>
-      <li className="hover:bg-white hover:text-black flex rounded-md p-2 cursor-pointer hover:bg-light-white text-white text-sm items-center gap-x-4">
-        <NavLink to="/dashboard">
-          <FaHome />
-        </NavLink>
+      <li>
         <NavLink
-          className={`${open ? "block" : "hidden"} origin-left duration-200`}
-          to="/dashboard"
+          to="/"
+          className={({ isActive }) =>
+            `flex items-center gap-x-4 rounded-md p-2 text-sm duration-200 ${
+              isActive
+                ? "bg-white text-black"
+                : "text-white hover:bg-white hover:text-black"
+            }`
+          }
         >
-          Home
+          <FaHome />
+          {open && <span>Home</span>}
         </NavLink>
       </li>
+
       {user && (
         <>
-          <li className="hover:bg-white hover:text-black flex rounded-md p-2 cursor-pointer hover:bg-light-white text-white text-sm items-center gap-x-4">
-            <NavLink to="addCampaign">
-              <MdAddBox />
-            </NavLink>
+          <li className="mt-3">
             <NavLink
-              className={`${
-                open ? "block" : "hidden"
-              } origin-left duration-200`}
+              to="/dashboard"
+              className={({ isActive }) =>
+                `flex items-center gap-x-4 rounded-md p-2 text-sm duration-200 ${
+                  isActive
+                    ? "bg-white text-black"
+                    : "text-white hover:bg-white hover:text-black"
+                }`
+              }
+            >
+              <FaUser />
+              {open && <span>Profile</span>}
+            </NavLink>
+          </li>
+
+          <li className="mt-3">
+            <NavLink
               to="addCampaign"
+              className={({ isActive }) =>
+                `flex items-center gap-x-4 rounded-md p-2 text-sm duration-200 ${
+                  isActive
+                    ? "bg-white text-black"
+                    : "text-white hover:bg-white hover:text-black"
+                }`
+              }
             >
-              Add New Campaign
+              <MdAddBox />
+              {open && <span>Add New Campaign</span>}
             </NavLink>
           </li>
-          <li className="hover:bg-white hover:text-black flex rounded-md p-2 cursor-pointer hover:bg-light-white text-white text-sm items-center gap-x-4">
-            <NavLink to={`myCampaign/${user?.email}`}>
-              <FaBullhorn />
-            </NavLink>
+
+          <li className="mt-3">
             <NavLink
-              className={`${
-                open ? "block" : "hidden"
-              } origin-left duration-200`}
               to={`myCampaign/${user?.email}`}
+              className={({ isActive }) =>
+                `flex items-center gap-x-4 rounded-md p-2 text-sm duration-200 ${
+                  isActive
+                    ? "bg-white text-black"
+                    : "text-white hover:bg-white hover:text-black"
+                }`
+              }
             >
-              My Campaign
+              <FaBullhorn />
+              {open && <span>My Campaign</span>}
             </NavLink>
           </li>
-          <li className="hover:bg-white hover:text-black flex rounded-md p-2 cursor-pointer hover:bg-light-white text-white text-sm items-center gap-x-4">
-            <NavLink to={`myDonations/${user?.email}`}>
-              <FaDonate />
-            </NavLink>
+
+          <li className="mt-3">
             <NavLink
-              className={`${
-                open ? "block" : "hidden"
-              } origin-left duration-200`}
               to={`myDonations/${user?.email}`}
+              className={({ isActive }) =>
+                `flex items-center gap-x-4 rounded-md p-2 text-sm duration-200 ${
+                  isActive
+                    ? "bg-white text-black"
+                    : "text-white hover:bg-white hover:text-black"
+                }`
+              }
             >
-              My Donations
+              <FaDonate />
+              {open && <span>My Donations</span>}
             </NavLink>
           </li>
         </>
@@ -103,7 +256,7 @@ const SideBar = ({open, setOpen}) => {
     <div
       className={` ${
         open ? "w-72" : "w-20 "
-      } bg-[#308FB5] h-screen p-5  pt-8 relative duration-300 flex flex-col justify-between`}
+      } bg-[#308FB5] h-[100vh] p-5  pt-8 relative duration-300 flex flex-col justify-between`}
     >
       <FaArrowLeft
         className={`absolute cursor-pointer -right-3 top-9 w-7 h-7 text-sm text-white border-[#308FB5] bg-[#308FB5]

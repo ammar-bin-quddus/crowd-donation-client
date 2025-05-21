@@ -19,7 +19,7 @@ const UpdateCampaign = () => {
     const title = form.title.value;
     const description = form.description.value;
     const amount = form.amount.value;
-    const deadline = form.deadline.value;
+    const deadline = new Date(form.deadline.value);
     const type = form.type.value;
     const email = form.email.value;
     const userName = form.userName.value;
@@ -59,12 +59,19 @@ const UpdateCampaign = () => {
       });
   };
 
+  const formatDate = (dateStr) => {
+    const date = new Date(dateStr);
+    return date.toISOString().split("T")[0]; // YYYY-MM-DD
+  };
+
   return (
-    <div className="w-11/12 mx-auto my-8">
-      <div className="py-3">
+    <div>
+      <div>
         <Nav />
       </div>
-      <h1 className="font-bold text-3xl text-center">Update Campaign Data</h1>
+      <h1 className="font-bold text-3xl text-center mt-8">
+        Update Campaign Data
+      </h1>
       <form onSubmit={(e) => handleUpdateCampaignForm(e)} className="card-body">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* image url */}
@@ -145,7 +152,7 @@ const UpdateCampaign = () => {
             <input
               type="date"
               name="deadline"
-              defaultValue={deadline}
+              defaultValue={formatDate(deadline)}
               className="input input-bordered"
               required
             />
@@ -183,7 +190,7 @@ const UpdateCampaign = () => {
           <button className="btn btn-neutral">UPDATE</button>
         </div>
       </form>
-      <div className="py-3">
+      <div>
         <Footer />
       </div>
     </div>

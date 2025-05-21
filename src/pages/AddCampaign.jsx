@@ -12,7 +12,7 @@ const AddCampaign = () => {
     const title = form.title.value;
     const description = form.description.value;
     const amount = form.amount.value;
-    const deadline = form.deadline.value;
+    const deadline = new Date(form.deadline.value);
     const type = form.type.value;
     const email = form.email.value;
     const userName = form.userName.value;
@@ -52,10 +52,20 @@ const AddCampaign = () => {
       });
   };
 
+  const formatDate = (dateStr) => {
+    const date = new Date(dateStr);
+    return date.toISOString().split("T")[0]; // YYYY-MM-DD
+  };
+
   return (
     <div className="w-11/12 mx-auto my-8">
-      <h1 className="font-bold text-3xl text-center text-base-content">Add a New Campaign</h1>
-      <form onSubmit={(e) => handleAddCampaignForm(e)} className="card-body text-base-content">
+      <h1 className="font-bold text-3xl text-center text-base-content">
+        Add a New Campaign
+      </h1>
+      <form
+        onSubmit={(e) => handleAddCampaignForm(e)}
+        className="card-body text-base-content"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* image url */}
           <div className="form-control">

@@ -1,50 +1,50 @@
-import React, { useEffect, useState } from "react";
-import RunningCard from "./RunningCard";
+import { Link } from "react-router-dom";
+import UseRunningCampaigns from "../hooks/UseRunningCampaigns";
 
 const RunningCamp = () => {
-  const [allData, setAllData] = useState([]);
-  const [runningData, setRunningData] = useState([]);
-  // console.log(allData)
+  const { campaigns, isLoading, error } = UseRunningCampaigns();
+  console.log(campaigns)
 
-  const currentDate = new Date();
-
-  useEffect(() => {
-    const fetchAllData = async () => {
-      try {
-        const response = await fetch(
-          "https://crowd-donation-server.vercel.app/addCampaign"
-        );
-        const data = await response.json();
-        setAllData(data);
-      } catch (error) {
-        console.log("Error", error);
-      }
-    };
-
-    fetchAllData();
-  }, []);
-
-  useEffect(() => {
-    if (allData.length > 0) {
-      const filteredData = allData.filter(
-        (item) => new Date(item.deadline) > currentDate
-      );
-      setRunningData(filteredData);
-    }
-  }, [allData]);
-
-  console.log(runningData)
+  if (isLoading)
+    return <p className="text-center">Loading running campaigns...</p>;
+  if (error)
+    return (
+      <p className="text-center text-red-500">Failed to load campaigns.</p>
+    );
 
   return (
-    <div className="w-11/12 mx-auto my-8">
-      <p className="text-2xl text-center text-base-content font-bold">Running Campaigns</p>
-
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {
-          runningData.map((running) => <RunningCard key={running._id} running={running} />)
-        }
+    <section className="px-4 py-8 bg-base-100 text-base-content">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
+        Running Campaigns
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {campaigns.map((campaign) => (
+          <div
+            key={campaign._id}
+            className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 transition hover:shadow-lg"
+          >
+            <h3 className="text-lg md:text-xl font-semibold mb-2 text-gray-800 dark:text-white hover:text-yellow-600">
+              {campaign.title}
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-1">
+              Goal: <span className="font-medium">${campaign.goalAmount}</span>
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-1">
+              Raised:{" "}
+              <span className="font-medium">${campaign.donatedAmount}</span>
+            </p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+              Deadline: {new Date(campaign.deadline).toLocaleDateString()}
+            </p>
+            <Link to={`/campaigns/${campaign._id}`}>
+              <button className="btn btn-outline btn-sm w-full">
+                See More
+              </button>
+            </Link>
+          </div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 };
 

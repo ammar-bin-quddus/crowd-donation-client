@@ -7,7 +7,7 @@ import useMyDonation from "../hooks/useMyDonation";
 const DashboardHome = () => {
   const { user } = useContext(AuthContext);
   const { photoURL, displayName, email } = user;
-  const {campaigns, isLoading, error, refetch} = useMyCamp();
+  const {campaigns, isLoading, error} = useMyCamp();
   const {donations} = useMyDonation();
 
   if(isLoading) {
@@ -26,12 +26,12 @@ const DashboardHome = () => {
           <p className="text-xl sm:text-3xl font-semibold">{displayName}</p>
           <p className="text-lg sm:text-2xl">{email}</p>
         </div>
-        <div className="flex justify-center items-center gap-8">
-          <div className=""><p className="text-blue-950 font-bold text-3xl text-center">{campaigns?.length}</p><p>Total campaigns</p></div>
+        <div className="flex justify-center items-center sm:gap-8 text-center">
+          <div className=""><p className="text-blue-950 font-bold text-xl sm:text-3xl text-center">{campaigns?.length}</p><p>Total campaigns</p></div>
           <div className="divider divider-horizontal"></div>
-          <div className=""><p className="text-blue-950 font-bold text-3xl text-center">{donations?.length}</p><p>Total donations</p></div>
+          <div className=""><p className="text-blue-950 font-bold text-xl sm:text-3xl text-center">{donations?.length}</p><p>Total donations</p></div>
           <div className="divider divider-horizontal"></div>
-          <div className=""><p className="text-blue-950 font-bold text-3xl text-center">8.9</p><p>Ratings</p></div>
+          <div className=""><p className="text-blue-950 font-bold text-xl sm:text-3xl text-center">8.9</p><p>Ratings</p></div>
         </div>
       </div>
     </div>
