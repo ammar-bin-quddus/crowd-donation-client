@@ -24,7 +24,7 @@ const DetailsCampaign = () => {
     const currentDate = new Date();
     const deadlineDate = new Date(deadline);
     setIsExpired(deadlineDate < currentDate);
-  }, [setIsExpired]);
+  }, [setIsExpired, deadline]);
 
   const handleDonate = () => {
     fetch(`https://crowd-donation-server.vercel.app/campaigns/${_id}`, {

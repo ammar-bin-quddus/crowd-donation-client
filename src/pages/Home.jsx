@@ -4,6 +4,7 @@ import JoinUs from "../components/JoinUs";
 import RunningCamp from "../components/RunningCamp";
 import Map from "../components/Map";
 import News from "../components/news/News";
+import Team from "../components/Team";
 
 const Home = () => {
   return (
@@ -19,6 +20,9 @@ const Home = () => {
       </div>
       <div className="w-11/12 mx-auto my-6">
         <News />
+      </div>
+      <div className="w-11/12 mx-auto my-6">
+        <Team />
       </div>
       <div className="w-11/12 mx-auto my-6">
         <JoinUs />
